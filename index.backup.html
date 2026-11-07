@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elder Isaí Mejía Soto | Desarrollador Web, Automatización con IA & Soporte TI</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                            dark: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-emerald-600 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-xl"></i>
+        <span id="toast-message">¡Mensaje copiado con éxito!</span>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center font-bold text-lg shadow-lg shadow-indigo-500/30">
+                    IS
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-tight block">Elder Isaí Mejía</span>
+                    <span class="text-xs text-indigo-400 font-medium block">Freelance Tech Expert</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#servicios" class="hover:text-indigo-400 transition-colors">Servicios</a>
+                <a href="#proyectos" class="hover:text-indigo-400 transition-colors">Proyectos</a>
+                <a href="#experiencia" class="hover:text-indigo-400 transition-colors">Trayectoria</a>
+                <a href="#habilidades" class="hover:text-indigo-400 transition-colors">Stack</a>
+                <a href="#contacto" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-lg shadow-indigo-600/20 transition-all">Contratar Servicios</a>
+            </nav>
+
+            <button id="menu-btn" class="md:hidden text-2xl text-slate-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 space-y-3">
+            <a href="#servicios" class="block text-slate-300 hover:text-indigo-400 py-1">Servicios</a>
+            <a href="#proyectos" class="block text-slate-300 hover:text-indigo-400 py-1">Proyectos</a>
+            <a href="#experiencia" class="block text-slate-300 hover:text-indigo-400 py-1">Trayectoria</a>
+            <a href="#habilidades" class="block text-slate-300 hover:text-indigo-400 py-1">Stack</a>
+            <a href="#contacto" class="block text-center w-full py-3 rounded-xl bg-indigo-600 text-white font-semibold">Contratar Servicios</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-44 md:pb-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(99,102,241,0.15),rgba(255,255,255,0))]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Disponible para Proyectos Freelance & Remotos
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Desarrollo Web & <span class="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">Automatización con IA</span> para tu Negocio
+                    </h1>
+                    
+                    <p class="text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0">
+                        Más de 12 años de experiencia optimizando procesos empresariales, construyendo sistemas web a la medida e implementando infraestructura tecnológica robusta.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#contacto" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold shadow-xl shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 group">
+                            <span>Iniciar un Proyecto</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/isaimejia-dev/" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-semibold transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-linkedin text-indigo-400 text-xl"></i>
+                            <span>Ver LinkedIn</span>
+                        </a>
+                    </div>
+
+                    <!-- Key stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-white">+12</p>
+                            <p class="text-xs text-slate-400 mt-1">Años de Trayectoria</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-white">+250</p>
+                            <p class="text-xs text-slate-400 mt-1">Usuarios Soportados</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-white">100%</p>
+                            <p class="text-xs text-slate-400 mt-1">Enfoque a Resultados</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 h-72 sm:w-96 sm:h-96">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-600 to-violet-600 rounded-3xl transform rotate-6 scale-105 opacity-30 blur-xl"></div>
+                        <div class="relative bg-slate-900 border border-slate-800 rounded-3xl p-4 shadow-2xl overflow-hidden group">
+                            <!-- Simulated code/avatar window -->
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                                <div class="flex items-center gap-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400">isaimejia.dev</span>
+                            </div>
+                            <div class="py-6 flex flex-col items-center text-center">
+                                <div class="w-28 h-28 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 overflow-hidden mb-4 shadow-inner flex items-center justify-center">
+                                    <img src="img/foto01.jpg" alt="Elder Isaí Mejía Soto" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="font-bold text-lg text-white">Elder Isaí Mejía Soto</h3>
+                                <p class="text-xs text-indigo-400 font-medium mt-0.5">Desarrollador Web & Infraestructura</p>
+                                <div class="mt-4 flex flex-wrap justify-center gap-1.5">
+                                    <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-lg text-xs font-mono">PHP / Python</span>
+                                    <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-lg text-xs font-mono">MySQL</span>
+                                    <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded-lg text-xs font-mono">IA & Automations</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Offered (Freelance Focus) -->
+    <section id="servicios" class="py-20 bg-slate-900/50 border-t border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-indigo-400 font-semibold text-sm uppercase tracking-wider">Soluciones Tecnológicas Freelance</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">¿Qué servicios ofrezco para impulsar tu proyecto?</h3>
+                <p class="text-slate-400">Transformo requerimientos complejos en aplicaciones web robustas, automatizadas y fáciles de usar.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-indigo-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-600/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Desarrollo de Sistemas Web a Medida</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Creación de intranets corporativas, portales de gestión, sistemas de seguimiento de trámites, control de flotas y plataformas web escalables con PHP, MySQL, Python, WordPress y Drupal.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 font-medium">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Arquitectura limpia y optimizada</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Integración con bases de datos</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Diseños responsivos y seguros</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-indigo-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-600/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Automatización & Integración con IA</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Integro Inteligencia Artificial y scripts automatizados en Python para acelerar procesos rutinarios, numere oficios automáticamente y optimice flujos de trabajo diarios.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 font-medium">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Reducción de tiempos operativos</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Asistentes y herramientas de IA</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Procesamiento y análisis de datos</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-indigo-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-600/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Infraestructura, Cloud & Soporte TI</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Administración avanzada de servidores Windows y Linux, Active Directory, redes, configuración de Microsoft 365, Google Workspace y soporte técnico integral.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 font-medium">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Migración y gestión de M365</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Seguridad perimetral y respaldos</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Soporte especializado a usuarios</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="proyectos" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-indigo-400 font-semibold text-sm uppercase tracking-wider">Casos de Éxito</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Proyectos Destacados</h3>
+                <p class="text-slate-400">Ejemplos reales de sistemas e infraestructura implementados con éxito en instituciones y empresas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-indigo-500/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-lg text-xs font-mono font-semibold">Institucional / Intranet</span>
+                            <i class="fa-solid fa-building-columns text-slate-500 text-xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Intranet Institucional para 250 Empleados</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Desarrollo e implementación de portal corporativo con integración directa a Microsoft 365, optimizando la comunicación interna, gestión documental y colaboración entre 12 gerencias.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">PHP</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">Microsoft 365</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">MySQL</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-indigo-500/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-lg text-xs font-mono font-semibold">Gestión Pública / Trámites</span>
+                            <i class="fa-solid fa-file-invoice text-slate-500 text-xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Sistema de Seguimiento de Trámites y Consulta Pública</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Plataforma web con indicadores de gestión en tiempo real y consulta abierta al ciudadano, reduciendo cuellos de botella en la tramitología interna.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">PHP / MySQL</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">KPIs de Gestión</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">UI/UX Ágil</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-indigo-500/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-lg text-xs font-mono font-semibold">Automatización Documental</span>
+                            <i class="fa-solid fa-stamp text-slate-500 text-xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Plataforma de Numeración Automática de Oficios y Memorandos</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Sistema inteligente para la emisión, control y numeración correlativa automatizada de documentos oficiales, evitando duplicidades y pérdida de información.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">Python</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">Automatización</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">Base de Datos</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-indigo-500/40 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-lg text-xs font-mono font-semibold">Logística & Control</span>
+                            <i class="fa-solid fa-truck text-slate-500 text-xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">Sistema de Control de Flota para 50 Vehículos</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Software de monitoreo y control logístico para flotilla vehicular y asignación de rutas a motoristas, maximizando la eficiencia operativa de transporte institucional.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">Web App</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">Control Logístico</span>
+                        <span class="px-2.5 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300">PHP/MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience Timeline -->
+    <section id="experiencia" class="py-20 bg-slate-900/50 border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-indigo-400 font-semibold text-sm uppercase tracking-wider">Trayectoria Profesional</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Experiencia Institucional y Corporativa</h3>
+                <p class="text-slate-400">Resumen de roles clave desempeñados en tecnología, desarrollo y soporte de infraestructura.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Exp 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 relative pl-8 sm:pl-10">
+                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-indigo-600 rounded-l-2xl"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                        <div>
+                            <h4 class="text-xl font-bold text-white">Oficial de Infraestructura y Desarrollo</h4>
+                            <p class="text-indigo-400 font-medium text-sm">Instituto Hondureño de Turismo (IHT)</p>
+                        </div>
+                        <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-lg text-xs font-mono font-semibold self-start sm:self-auto">2014 - Actualidad</span>
+                    </div>
+                    <ul class="space-y-2 text-slate-300 text-sm">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-indigo-400 text-xs mt-1"></i> Desarrollo de sistemas institucionales personalizados para 12 gerencias.</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-indigo-400 text-xs mt-1"></i> Administración integral de red, servidores, dominios, sitios web y correo institucional.</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-indigo-400 text-xs mt-1"></i> Soporte técnico especializado y resolución de incidencias para 250 usuarios activos.</li>
+                    </ul>
+                </div>
+
+                <!-- Exp 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 relative pl-8 sm:pl-10">
+                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-violet-600 rounded-l-2xl"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                        <div>
+                            <h4 class="text-xl font-bold text-white">Jefe de Soporte (Outsourcing)</h4>
+                            <p class="text-indigo-400 font-medium text-sm">Special Tickets</p>
+                        </div>
+                        <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-lg text-xs font-mono font-semibold self-start sm:self-auto">2013 - 2019</span>
+                    </div>
+                    <ul class="space-y-2 text-slate-300 text-sm">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-indigo-400 text-xs mt-1"></i> Administración eficiente de sitios web y sistemas de tickets de atención.</li>
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-indigo-400 text-xs mt-1"></i> Coordinación de personal técnico y logística tecnológica en eventos y operaciones.</li>
+                    </ul>
+                </div>
+
+                <!-- Exp 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 relative pl-8 sm:pl-10">
+                    <div class="absolute left-0 top-0 bottom-0 w-2 bg-slate-700 rounded-l-2xl"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                        <div>
+                            <h4 class="text-xl font-bold text-white">Encargado de Soporte Técnico</h4>
+                            <p class="text-indigo-400 font-medium text-sm">Comunicaciones Globales</p>
+                        </div>
+                        <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-lg text-xs font-mono font-semibold self-start sm:self-auto">2011 - 2012</span>
+                    </div>
+                    <ul class="space-y-2 text-slate-300 text-sm">
+                        <li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-indigo-400 text-xs mt-1"></i> Implementación y soporte de servidores, sistemas CCTV IP y plataformas tecnológicas.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills & Education -->
+    <section id="habilidades" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-indigo-400 font-semibold text-sm uppercase tracking-wider">Competencias & Educación</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Stack Tecnológico y Formación Académica</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Tech Stack Cards -->
+                <div class="space-y-6">
+                    <h4 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-indigo-400"></i> Habilidades Técnicas
+                    </h4>
+                    
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+                        <div>
+                            <span class="text-xs font-mono text-indigo-400 uppercase tracking-wider block mb-2">Desarrollo Web & IA</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">PHP</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">MySQL</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Python</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">HTML / CSS</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">WordPress</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Drupal</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Inteligencia Artificial</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-mono text-indigo-400 uppercase tracking-wider block mb-2">Infraestructura & Sistemas</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Windows Server</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Linux</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Active Directory</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Redes & CCTV</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Virtualización</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="text-xs font-mono text-indigo-400 uppercase tracking-wider block mb-2">Plataformas Cloud & Diseño</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Microsoft 365</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Google Workspace</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Adobe Photoshop</span>
+                                <span class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-xl text-xs font-medium">Illustrator & InDesign</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education & Languages -->
+                <div class="space-y-6">
+                    <h4 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-indigo-400"></i> Educación & Idiomas
+                    </h4>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+                        <div class="flex items-start gap-4 pb-6 border-b border-slate-800">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-600/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl flex-shrink-0">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-white">Ingeniería en Informática</h5>
+                                <p class="text-indigo-400 text-sm font-medium">CEUTEC</p>
+                                <p class="text-slate-400 text-xs mt-2">Cursos complementarios en Desarrollo Web, Marketing Digital, GNU/Linux y Seguridad Perimetral.</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h5 class="font-bold text-white mb-3">Idiomas</h5>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-slate-300 font-medium">Español</span>
+                                        <span class="text-indigo-400 text-xs">Nativo</span>
+                                    </div>
+                                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-indigo-600 h-full w-full rounded-full"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span class="text-slate-300 font-medium">Inglés</span>
+                                        <span class="text-indigo-400 text-xs">Básico (En estudio - 60% completado)</span>
+                                    </div>
+                                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-violet-500 h-full w-[60%] rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Freelance Inquiry Section -->
+    <section id="contacto" class="py-20 bg-slate-900/50 border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <h2 class="text-indigo-400 font-semibold text-sm uppercase tracking-wider">¿Hablamos de tu Proyecto?</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Contáctame Hoy Mismo</h3>
+                <p class="text-slate-400">Disponible en Honduras y para trabajo remoto internacional. Cuéntame qué necesitas y te responderé con una propuesta.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-5xl mx-auto">
+                <!-- Info cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-600/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl flex-shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Correo Electrónico</span>
+                            <a href="mailto:isaiimejia08@gmail.com" class="font-bold text-white hover:text-indigo-400 transition-colors">isaiimejia08@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-600/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl flex-shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Teléfonos / WhatsApp</span>
+                            <p class="font-bold text-white">+504 8731-3298 / +504 9447-8205</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-600/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-xl flex-shrink-0">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">LinkedIn Profesional</span>
+                            <a href="https://www.linkedin.com/in/isaimejia-dev/" target="_blank" class="font-bold text-white hover:text-indigo-400 transition-colors">/in/isaimejia-dev</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Form / WhatsApp Generator -->
+                <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                    <h4 class="text-xl font-bold text-white mb-6">Enviar Mensaje Directo</h4>
+                    
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Tu Nombre o Empresa</label>
+                            <input type="text" id="name" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Ej. Juan Pérez">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1">Correo Electrónico</label>
+                                <input type="email" id="email" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors" placeholder="correo@ejemplo.com">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1">Servicio de Interés</label>
+                                <select id="service" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors">
+                                    <option value="Desarrollo Web">Desarrollo Web a Medida</option>
+                                    <option value="Automatización IA">Automatización con IA</option>
+                                    <option value="Soporte TI e Infraestructura">Soporte TI / Servidores</option>
+                                    <option value="Otro Proyecto">Otro Proyecto General</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Detalles del Proyecto</label>
+                            <textarea id="message" rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Cuéntame brevemente qué necesitas desarrollar o automatizar..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Enviar por WhatsApp / Copiar Mensaje</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12 text-center text-slate-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <p class="font-medium text-slate-400">Elder Isaí Mejía Soto — Desarrollador de Sistemas Web, Automatización con IA & Soporte TI</p>
+            <p class="text-xs">Honduras • Disponible para trabajo remoto internacional.</p>
+            <p class="text-xs pt-4 border-t border-slate-900/80">© 2026 Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Contact form handler to generate WhatsApp message or copy text
+        const contactForm = document.getElementById('contact-form');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+
+        function showToast(msg) {
+            toastMessage.textContent = msg;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            const text = `¡Hola Isaí! Mi nombre es ${name} (${email}). Estoy interesado en tus servicios de *${service}*. Detalle del proyecto: "${message}"`;
+            const encodedText = encodeURIComponent(text);
+
+            // Copy to clipboard fallback or WhatsApp redirect
+            const whatsappUrl = `https://wa.me/50487313298?text=${encodedText}`;
+            
+            // Attempt clipboard copy as well
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast('¡Mensaje copiado y listo para WhatsApp!');
+            } catch (err) {
+                showToast('Redirigiendo a WhatsApp...');
+            }
+            document.body.removeChild(textarea);
+
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
